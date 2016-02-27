@@ -42,6 +42,8 @@ class ShapeDrawingTool : public tetris::DrawingTool<tetris::Shape>
           block->draw(dci);
         }
       }
+
+      out_dev << move_to(orig_x, orig_y);
     }
 
     virtual std::shared_ptr<tetris::DrawingTool<tetris::Shape>> copy()

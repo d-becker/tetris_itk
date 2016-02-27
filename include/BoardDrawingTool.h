@@ -53,6 +53,8 @@ class BoardDrawingTool : public tetris::DrawingTool<tetris::Board>
           }
         }
       }
+
+      out_dev << move_to(orig_x, orig_y);
     }
 
     virtual std::shared_ptr<tetris::DrawingTool<tetris::Board>> copy()

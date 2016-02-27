@@ -43,6 +43,8 @@ class GameBoardDrawingTool : public tetris::DrawingTool<tetris::GameBoard>
       if (current_shape != nullptr) {
         current_shape->draw(dci);
       }
+
+      out_dev << move_to(orig_x, orig_y);
     }
 
     virtual std::shared_ptr<tetris::DrawingTool<tetris::GameBoard>> copy()

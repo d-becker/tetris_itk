@@ -3,8 +3,10 @@ obj/
 lib/
 nbproject/
 doxygen/
+graphics_src/
 .objs/
 
+graphics.hpp
 licence.txt
 licence_script.py
 main_release.cpp

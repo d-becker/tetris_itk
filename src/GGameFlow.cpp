@@ -5,6 +5,7 @@
 #include "BasicBoard.h"
 #include "DefaultGame.h"
 #include "DefaultGameBoard.h"
+#include "locking_shared_ptr.h"
 #include "Shape.h"
 #include "TetrominoI.h"
 #include "TetrominoJ.h"
@@ -80,7 +81,6 @@ int GGameFlow::init_game(int window_width,
 
   gout.open(window_width, window_height);
   gout << move_to(0, 0);
-  //game_flow.draw(); /////////////////////////////////////////////////////////////////////
   game_flow.newGame();
 
   event ev;
