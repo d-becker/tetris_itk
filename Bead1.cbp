@@ -51,10 +51,12 @@
 		<Unit filename="include/GGameFlow.h" />
 		<Unit filename="include/GameBoardDrawingTool.h" />
 		<Unit filename="include/GameDrawingTool.h" />
+		<Unit filename="include/OutputWrapper.h" />
 		<Unit filename="include/RGB.h" />
 		<Unit filename="include/ShapeDrawingTool.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/GGameFlow.cpp" />
+		<Unit filename="src/OutputWrapper.cpp" />
 		<Extensions>
 			<envvars />
 			<code_completion />

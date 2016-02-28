@@ -5,6 +5,8 @@
 
 #include <graphics.hpp>
 
+#include "OutputWrapper.h"
+
 namespace tetris {
 
 /**
@@ -15,8 +17,8 @@ namespace tetris {
  */
 struct DrawingContextInfo
 {
-  DrawingContextInfo(genv::groutput& p_gout, int p_block_width)
-   : gout(p_gout),
+  DrawingContextInfo(OutputWrapper& p_out_dev, int p_block_width)
+   : out_dev(p_out_dev),
      block_width(p_block_width)
   {
 
@@ -24,8 +26,7 @@ struct DrawingContextInfo
 
   virtual ~DrawingContextInfo() {}
 
-  genv::groutput& gout = genv::gout;
-  std::mutex m_gout_mutex {};
+  OutputWrapper& out_dev;
 
   const int block_width;
 };

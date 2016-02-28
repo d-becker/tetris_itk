@@ -26,9 +26,9 @@ class BoardDrawingTool : public tetris::DrawingTool<tetris::Board>
                       tetris::DrawingContextInfo& dci) override
     {
       using namespace genv;
-      groutput& out_dev = dci.gout;
-      int orig_x = out_dev.x();
-      int orig_y = out_dev.y();
+      OutputWrapper& out_dev = dci.out_dev;
+      int orig_x = out_dev.getX();
+      int orig_y = out_dev.getY();
 
       int block_size = dci.block_width;
 
@@ -36,10 +36,10 @@ class BoardDrawingTool : public tetris::DrawingTool<tetris::Board>
       int width = board.getWidth();
 
       // Painting the background.
-      out_dev << m_background_colour;
-      out_dev << box(width * block_size, height * block_size);
+      out_dev.setColour(m_background_colour);
+      out_dev.box(width * block_size, height * block_size);
 
-      out_dev << move_to(orig_x, orig_y);
+      out_dev.moveTo(orig_x, orig_y);
 
       // Painting the filled blocks.
       for (int vertical = 0; vertical < height; ++vertical) {
@@ -47,14 +47,14 @@ class BoardDrawingTool : public tetris::DrawingTool<tetris::Board>
           std::shared_ptr<const tetris::Block> block = board.get(vertical,
                                                                  horizontal);
           if (block != nullptr) {
-            out_dev << move_to(orig_x + horizontal * block_size,
-                               orig_y + vertical * block_size);
+            out_dev.moveTo(orig_x + horizontal * block_size,
+                           orig_y + vertical * block_size);
             block->draw(dci);
           }
         }
       }
 
-      out_dev << move_to(orig_x, orig_y);
+      out_dev.moveTo(orig_x, orig_y);
     }
 
     virtual std::shared_ptr<tetris::DrawingTool<tetris::Board>> copy()

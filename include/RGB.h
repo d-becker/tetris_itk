@@ -21,9 +21,4 @@ struct RGB
   int b;
 };
 
-inline genv::groutput& operator<<(genv::groutput& out, const RGB& rgb) {
-  out << genv::color(rgb.r, rgb.g, rgb.b);
-  return out;
-}
-
 #endif // RGB_H

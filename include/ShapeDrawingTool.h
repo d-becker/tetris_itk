@@ -26,9 +26,9 @@ class ShapeDrawingTool : public tetris::DrawingTool<tetris::Shape>
                       tetris::DrawingContextInfo& dci) override
     {
       using namespace genv;
-      groutput& out_dev = dci.gout;
-      int orig_x = out_dev.x();
-      int orig_y = out_dev.y();
+      OutputWrapper& out_dev = dci.out_dev;
+      int orig_x = out_dev.getX();
+      int orig_y = out_dev.getY();
 
       int block_size = dci.block_width;
 
@@ -37,13 +37,13 @@ class ShapeDrawingTool : public tetris::DrawingTool<tetris::Shape>
       for (const tetris::Coords& c : block_positions) {
         std::shared_ptr<tetris::Block> block = shape.get(c);
         if (block != nullptr) {
-          out_dev << move_to(orig_x + c.getHorizontal() * block_size,
-                             orig_y + c.getVertical() * block_size);
+          out_dev.moveTo(orig_x + c.getHorizontal() * block_size,
+                         orig_y + c.getVertical() * block_size);
           block->draw(dci);
         }
       }
 
-      out_dev << move_to(orig_x, orig_y);
+      out_dev.moveTo(orig_x, orig_y);
     }
 
     virtual std::shared_ptr<tetris::DrawingTool<tetris::Shape>> copy()

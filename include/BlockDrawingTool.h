@@ -32,24 +32,27 @@ class BlockDrawingTool : public tetris::DrawingTool<tetris::Block>
                       tetris::DrawingContextInfo& dci) override
     {
       using namespace genv;
-      groutput& out_dev = dci.gout;
-      int orig_x = out_dev.x();
-      int orig_y = out_dev.y();
+      OutputWrapper& out_dev = dci.out_dev;
+      int orig_x = out_dev.getX();
+      int orig_y = out_dev.getY();
 
       int block_size = dci.block_width;
 
-      out_dev << m_fill_colour;
-      out_dev << box(block_size, block_size);
+      bool move_success = out_dev.moveTo(orig_x, orig_y);
+      if (!move_success) { return; }
 
-      out_dev << move_to(orig_x, orig_y);
+      out_dev.setColour(m_fill_colour);
+      out_dev.box(block_size, block_size);
 
-      out_dev << m_line_colour;
-      out_dev << line(block_size, 0);
-      out_dev << line(0, block_size);
-      out_dev << line(-block_size, 0);
-      out_dev << line(0, -block_size);
+      out_dev.moveTo(orig_x, orig_y);
 
-      out_dev << move_to(orig_x, orig_y); // Probably not be necessary.
+      out_dev.setColour(m_line_colour);
+      out_dev.line(block_size, 0);
+      out_dev.line(0, block_size);
+      out_dev.line(-block_size, 0);
+      out_dev.line(0, -block_size);
+
+      out_dev.moveTo(orig_x, orig_y); // Probably not be necessary.
     }
 
     virtual std::shared_ptr<tetris::DrawingTool<tetris::Block>> copy()

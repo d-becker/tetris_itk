@@ -1,11 +1,12 @@
 # depslib dependency file v1.0
-1456577889 source:/home/danielbecker/Documents/PPKE/Bev_prog/Bead1/src/GGameFlow.cpp
+1456685333 source:/home/danielbecker/Documents/PPKE/Bev_prog/Bead1/src/GGameFlow.cpp
 	"GGameFlow.h"
 	"graphics.hpp"
 	"BasicBlock.h"
 	"BasicBoard.h"
 	"DefaultGame.h"
 	"DefaultGameBoard.h"
+	"locking_shared_ptr.h"
 	"Shape.h"
 	"TetrominoI.h"
 	"TetrominoJ.h"
@@ -20,6 +21,7 @@
 	"BoardDrawingTool.h"
 	"GameBoardDrawingTool.h"
 	"GameDrawingTool.h"
+	"OutputWrapper.h"
 
 1456573732 /home/danielbecker/Documents/PPKE/Bev_prog/Bead1/include/GGameFlow.h
 	"BasicGameFlow.h"
@@ -62,7 +64,7 @@
 	<mutex>
 	<thread>
 
-1456574520 source:/home/danielbecker/Documents/PPKE/Bev_prog/Bead1/main.cpp
+1456664393 source:/home/danielbecker/Documents/PPKE/Bev_prog/Bead1/main.cpp
 	<iostream>
 	<graphics.hpp>
 	"BlockDrawingTool.h"
@@ -74,7 +76,7 @@
 1456611769 /home/danielbecker/Documents/PPKE/Bev_prog/Bead1/graphics.hpp
 	<string>
 
-1456571203 /home/danielbecker/Documents/PPKE/Bev_prog/Bead1/include/BlockDrawingTool.h
+1456690294 /home/danielbecker/Documents/PPKE/Bev_prog/Bead1/include/BlockDrawingTool.h
 	<memory>
 	<Block.h>
 	<Drawing.h>
@@ -85,14 +87,15 @@
 	<memory>
 	"Drawing.h"
 
-1456572662 /home/danielbecker/Documents/PPKE/Bev_prog/Bead1/include/DrawingContextInfo.h
+1456678194 /home/danielbecker/Documents/PPKE/Bev_prog/Bead1/include/DrawingContextInfo.h
 	<mutex>
 	<graphics.hpp>
+	"OutputWrapper.h"
 
-1456574085 /home/danielbecker/Documents/PPKE/Bev_prog/Bead1/include/RGB.h
+1456679203 /home/danielbecker/Documents/PPKE/Bev_prog/Bead1/include/RGB.h
 	<graphics.hpp>
 
-1456612905 /home/danielbecker/Documents/PPKE/Bev_prog/Bead1/include/ShapeDrawingTool.h
+1456679570 /home/danielbecker/Documents/PPKE/Bev_prog/Bead1/include/ShapeDrawingTool.h
 	<memory>
 	<vector>
 	<Drawing.h>
@@ -105,7 +108,7 @@
 	"Coords.h"
 	"Drawing.h"
 
-1456612973 /home/danielbecker/Documents/PPKE/Bev_prog/Bead1/include/GameBoardDrawingTool.h
+1456679596 /home/danielbecker/Documents/PPKE/Bev_prog/Bead1/include/GameBoardDrawingTool.h
 	<Board.h>
 	<Drawing.h>
 	<GameBoard.h>
@@ -136,36 +139,45 @@
 1456071581 /home/danielbecker/Programming/C++/Projects/Tetris0.2/include/DefaultGameBoard.h
 	"GameBoard.h"
 
-1455453326 /home/danielbecker/Programming/C++/Projects/Tetris0.2/include/TetrominoI.h
+1456614536 /home/danielbecker/Programming/C++/Projects/Tetris0.2/include/TetrominoI.h
 	"BasicShape.h"
 
 1454691441 /home/danielbecker/Programming/C++/Projects/Tetris0.2/include/BasicShape.h
 	"Shape.h"
 
-1455452456 /home/danielbecker/Programming/C++/Projects/Tetris0.2/include/TetrominoJ.h
+1456614536 /home/danielbecker/Programming/C++/Projects/Tetris0.2/include/TetrominoJ.h
 	"BasicShape.h"
 
-1455451811 /home/danielbecker/Programming/C++/Projects/Tetris0.2/include/TetrominoL.h
+1456614536 /home/danielbecker/Programming/C++/Projects/Tetris0.2/include/TetrominoL.h
 	"BasicShape.h"
 
 1454691441 /home/danielbecker/Programming/C++/Projects/Tetris0.2/include/TetrominoO.h
 	"BasicShape.h"
 
-1455452625 /home/danielbecker/Programming/C++/Projects/Tetris0.2/include/TetrominoS.h
+1456614536 /home/danielbecker/Programming/C++/Projects/Tetris0.2/include/TetrominoS.h
 	"BasicShape.h"
 
 1454691441 /home/danielbecker/Programming/C++/Projects/Tetris0.2/include/TetrominoT.h
 	"BasicShape.h"
 
-1455452772 /home/danielbecker/Programming/C++/Projects/Tetris0.2/include/TetrominoZ.h
+1456614536 /home/danielbecker/Programming/C++/Projects/Tetris0.2/include/TetrominoZ.h
 	"BasicShape.h"
 
-1456577183 /home/danielbecker/Documents/PPKE/Bev_prog/Bead1/include/BoardDrawingTool.h
+1456679692 /home/danielbecker/Documents/PPKE/Bev_prog/Bead1/include/BoardDrawingTool.h
 	<Board.h>
 	<Drawing.h>
 	"RGB.h"
 
-1456612770 /home/danielbecker/Programming/C++/Projects/Tetris0.2/include/locking_shared_ptr.h
+1456614620 /home/danielbecker/Programming/C++/Projects/Tetris0.2/include/locking_shared_ptr.h
 	<memory>
 	<mutex>
+
+1456690550 /home/danielbecker/Documents/PPKE/Bev_prog/Bead1/include/OutputWrapper.h
+	<graphics.hpp>
+	"RGB.h"
+
+1456690235 source:/home/danielbecker/Documents/PPKE/Bev_prog/Bead1/src/OutputWrapper.cpp
+	"OutputWrapper.h"
+	<iostream>
+	<stdexcept>
 

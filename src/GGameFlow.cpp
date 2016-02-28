@@ -22,6 +22,7 @@
 #include "BoardDrawingTool.h"
 #include "GameBoardDrawingTool.h"
 #include "GameDrawingTool.h"
+#include "OutputWrapper.h"
 
 /* static */
 std::shared_ptr<tetris::Game> GGameFlow::make_game_flow(int height, int width)
@@ -104,7 +105,7 @@ GGameFlow::GGameFlow(int window_width,
   : tetris::BasicGameFlow(game, interval),
     m_window_width(window_width),
     m_window_height(window_height),
-    m_dci(genv::gout, calculate_block_size())
+    m_dci(OutputWrapper::instance(), calculate_block_size())
 {
   //ctor
 
@@ -129,16 +130,16 @@ GGameFlow::~GGameFlow()
 void GGameFlow::draw() {
   // TODO.
   using namespace genv;
-  groutput& out_dev = m_dci.gout;
-  out_dev << move_to(0, 0);
-  out_dev << color(0, 0, 0);
-  out_dev << box(m_window_width, m_window_height);
+  OutputWrapper& out_dev = m_dci.out_dev;
+  out_dev.moveTo(0, 0);
+  out_dev.colour(255, 255, 255);
+  out_dev.box(m_window_width, m_window_height);
 
-  out_dev << move_to(0, 0);
+  out_dev.moveTo(0, 0);
   auto game = getGame();
   game->draw(m_dci);
 
-  out_dev << refresh;
+  out_dev.refresh();
 }
 
 int GGameFlow::calculate_block_size() const {
