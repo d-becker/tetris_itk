@@ -42,32 +42,37 @@ bool OutputWrapper::move(int dx, int dy) {
 }
 
 void OutputWrapper::lineTo(int x, int y) {
-  check_equal_position();
+  //check_equal_position();
   m_out_dev << genv::line_to(x, y);
   pull_new_position();
 }
 
 void OutputWrapper::line(int dx, int dy) {
-  check_equal_position();
+  //check_equal_position();
   m_out_dev << genv::line(dx, dy);
   pull_new_position();
 }
 
 void OutputWrapper::boxTo(int x, int y) {
-  check_equal_position();
+  //check_equal_position();
   m_out_dev << genv::box_to(x, y);
   pull_new_position();
 }
 
 void OutputWrapper::box(int dx, int dy) {
-  check_equal_position();
+  //check_equal_position();
   m_out_dev << genv::box(dx, dy);
   pull_new_position();
 }
 
 void OutputWrapper::dot() {
-  check_equal_position();
+  //check_equal_position();
   m_out_dev << genv::dot;
+}
+
+void OutputWrapper::text(std::string str) {
+  m_out_dev << genv::text(str);
+  pull_new_position();
 }
 
 void OutputWrapper::refresh() {

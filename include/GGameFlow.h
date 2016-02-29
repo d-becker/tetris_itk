@@ -10,6 +10,8 @@
 class GGameFlow : public tetris::BasicGameFlow
 {
   public:
+    static std::shared_ptr<tetris::Game> make_game(int height, int width);
+
     static int init_game(int windiw_width,
                          int window_height,
                          int cols,
@@ -30,9 +32,9 @@ class GGameFlow : public tetris::BasicGameFlow
     int getWindowHeight() const {
       return m_window_height;
     }
-  private:
-    static std::shared_ptr<tetris::Game> make_game_flow(int height, int width);
 
+    void pause();
+  private:
     int calculate_block_size() const;
 
     const int m_window_width;

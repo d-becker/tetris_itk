@@ -4,6 +4,7 @@ lib/
 nbproject/
 doxygen/
 graphics_src/
+Fonts/
 .objs/
 
 graphics.hpp
@@ -14,3 +15,5 @@ main_release.cpp
 *.a
 *.o
 *~
+*.zip
+*.ttf

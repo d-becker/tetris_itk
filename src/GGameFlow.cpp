@@ -25,7 +25,7 @@
 #include "OutputWrapper.h"
 
 /* static */
-std::shared_ptr<tetris::Game> GGameFlow::make_game_flow(int height, int width)
+std::shared_ptr<tetris::Game> GGameFlow::make_game(int height, int width)
 {
   using namespace tetris;
   using namespace std;
@@ -72,12 +72,12 @@ std::shared_ptr<tetris::Game> GGameFlow::make_game_flow(int height, int width)
 
 /* static */
 int GGameFlow::init_game(int window_width,
-                     int window_height,
-                     int cols,
-                     int rows)
+                         int window_height,
+                         int cols,
+                         int rows)
 {
   using namespace genv;
-  std::shared_ptr<tetris::Game> game = make_game_flow(rows, cols);
+  std::shared_ptr<tetris::Game> game = make_game(rows, cols);
   GGameFlow game_flow(window_width, window_height, game);
 
   gout.open(window_width, window_height);
@@ -140,6 +140,10 @@ void GGameFlow::draw() {
   game->draw(m_dci);
 
   out_dev.refresh();
+}
+
+void GGameFlow::pause() {
+  tetris::BasicGameFlow::pause();
 }
 
 int GGameFlow::calculate_block_size() const {

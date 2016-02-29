@@ -54,9 +54,11 @@
 		<Unit filename="include/OutputWrapper.h" />
 		<Unit filename="include/RGB.h" />
 		<Unit filename="include/ShapeDrawingTool.h" />
+		<Unit filename="include/TopFlow.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/GGameFlow.cpp" />
 		<Unit filename="src/OutputWrapper.cpp" />
+		<Unit filename="src/TopFlow.cpp" />
 		<Extensions>
 			<envvars />
 			<code_completion />

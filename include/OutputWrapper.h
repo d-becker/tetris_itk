@@ -1,6 +1,8 @@
 #ifndef OUTPUTWRAPPER_H
 #define OUTPUTWRAPPER_H
 
+#include <string>
+
 #include <graphics.hpp>
 
 #include "RGB.h"
@@ -40,6 +42,8 @@ class OutputWrapper
     void box(int dx, int dy);
 
     void dot();
+
+    void text(std::string str);
 
     void refresh();
   protected:
