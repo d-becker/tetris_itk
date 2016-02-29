@@ -36,10 +36,12 @@ class GGameFlow : public tetris::BasicGameFlow
     void pause();
   private:
     int calculate_block_size() const;
+    int calculate_horizontal_offset() const;
 
     const int m_window_width;
     const int m_window_height;
     tetris::DrawingContextInfo m_dci;
+    int m_horizontal_offset;
 };
 
 #endif // GGAMEFLOW_H

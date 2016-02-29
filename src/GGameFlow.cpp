@@ -105,7 +105,8 @@ GGameFlow::GGameFlow(int window_width,
   : tetris::BasicGameFlow(game, interval),
     m_window_width(window_width),
     m_window_height(window_height),
-    m_dci(OutputWrapper::instance(), calculate_block_size())
+    m_dci(OutputWrapper::instance(), calculate_block_size()),
+    m_horizontal_offset(calculate_horizontal_offset())
 {
   //ctor
 
@@ -135,7 +136,7 @@ void GGameFlow::draw() {
   out_dev.colour(255, 255, 255);
   out_dev.box(m_window_width, m_window_height);
 
-  out_dev.moveTo(0, 0);
+  out_dev.moveTo(m_horizontal_offset, 0);
   auto game = getGame();
   game->draw(m_dci);
 
@@ -155,4 +156,12 @@ int GGameFlow::calculate_block_size() const {
   int vertical = m_window_height / rows; // Truncating to int.
 
   return horizontal < vertical ? horizontal : vertical;
+}
+
+int GGameFlow::calculate_horizontal_offset() const {
+  auto board = getGame()->getGameBoard()->getBoard();
+  int cols = board->getWidth();
+  int block_size = m_dci.block_width;
+
+  return (m_window_width - cols * block_size) / 2;
 }

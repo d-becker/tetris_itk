@@ -15,6 +15,6 @@ int main()
 {
     cout << "Hello world!" << endl;
     //GGameFlow::init_game(400, 500, 8, 20);
-    TopFlow tf(400, 500, 8, 20);
+    TopFlow tf(400, 600, 10, 20);
     return 0;
 }
