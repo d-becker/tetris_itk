@@ -15,8 +15,6 @@
 #include "TetrominoT.h"
 #include "TetrominoZ.h"
 
-#include <iostream> ///////////////////////////////////////////////////////////////////////
-
 #include "BlockDrawingTool.h"
 #include "ShapeDrawingTool.h"
 #include "BoardDrawingTool.h"
@@ -54,10 +52,6 @@ std::shared_ptr<tetris::Game> GGameFlow::make_game(int height, int width)
   tZ->setDrawingTool(make_shared<ShapeDrawingTool>());
   vector<shared_ptr<Shape>> shapes {tO, tT, tL, tJ, tI, tS, tZ};
 
-  if (shapes[0]->getBlocks()[0]->getDrawingTool() == nullptr) {
-    cout << "Null pointer in drawing tool.\n";
-  }
-
   shared_ptr<Board> board = make_shared<BasicBoard>(height, width);
   board->setDrawingTool(make_shared<BoardDrawingTool>(RGB(0, 200, 0)));
 
@@ -68,34 +62,6 @@ std::shared_ptr<tetris::Game> GGameFlow::make_game(int height, int width)
   game->setDrawingTool(make_shared<GameDrawingTool>());
 
   return game;
-}
-
-/* static */
-int GGameFlow::init_game(int window_width,
-                         int window_height,
-                         int cols,
-                         int rows)
-{
-  using namespace genv;
-  std::shared_ptr<tetris::Game> game = make_game(rows, cols);
-  GGameFlow game_flow(window_width, window_height, game);
-
-  gout.open(window_width, window_height);
-  gout << move_to(0, 0);
-  game_flow.newGame();
-
-  event ev;
-  while (gin >> ev) {
-    if (ev.type == ev_key) {
-      if (ev.keycode == key_escape) {
-        break;
-      } else {
-        game_flow.processInput(ev.keycode);
-      }
-    }
-  }
-
-  return 0;
 }
 
 GGameFlow::GGameFlow(int window_width,
