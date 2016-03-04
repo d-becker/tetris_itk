@@ -29,31 +29,45 @@ std::shared_ptr<tetris::Game> GGameFlow::make_game(int height, int width)
   using namespace std;
 
   shared_ptr<Block> block = make_shared<BasicBlock>();
-  block->setDrawingTool(make_shared<BlockDrawingTool>(RGB(0, 255, 255),
+
+  block->setDrawingTool(make_shared<BlockDrawingTool>(RGB(255, 124, 0),
                                                       RGB(0, 0, 255)));
-
-  if (block->getDrawingTool() == nullptr) {
-    cout << "Null pointer in drawing tool.\n";
-  }
-
   shared_ptr<TetrominoO> tO = make_shared<TetrominoO>(block);
   tO->setDrawingTool(make_shared<ShapeDrawingTool>());
+
+  block->setDrawingTool(make_shared<BlockDrawingTool>(RGB(69, 133, 154),
+                                                      RGB(0, 0, 255)));
   shared_ptr<TetrominoT> tT = make_shared<TetrominoT>(block);
   tT->setDrawingTool(make_shared<ShapeDrawingTool>());
+
+  block->setDrawingTool(make_shared<BlockDrawingTool>(RGB(255, 0, 0),
+                                                      RGB(0, 0, 255)));
   shared_ptr<TetrominoL> tL = make_shared<TetrominoL>(block);
   tL->setDrawingTool(make_shared<ShapeDrawingTool>());
+
+  block->setDrawingTool(make_shared<BlockDrawingTool>(RGB(49, 162, 49),
+                                                      RGB(0, 0, 255)));
   shared_ptr<TetrominoJ> tJ = make_shared<TetrominoJ>(block);
   tJ->setDrawingTool(make_shared<ShapeDrawingTool>());
+
+  block->setDrawingTool(make_shared<BlockDrawingTool>(RGB(124, 63, 124),
+                                                      RGB(0, 0, 255)));
   shared_ptr<TetrominoI> tI = make_shared<TetrominoI>(block);
   tI->setDrawingTool(make_shared<ShapeDrawingTool>());
+
+  block->setDrawingTool(make_shared<BlockDrawingTool>(RGB(255, 255, 255),
+                                                      RGB(0, 0, 255)));
   shared_ptr<TetrominoS> tS = make_shared<TetrominoS>(block);
   tS->setDrawingTool(make_shared<ShapeDrawingTool>());
+
+  block->setDrawingTool(make_shared<BlockDrawingTool>(RGB(255, 255, 0),
+                                                      RGB(0, 0, 255)));
   shared_ptr<TetrominoZ> tZ = make_shared<TetrominoZ>(block);
   tZ->setDrawingTool(make_shared<ShapeDrawingTool>());
   vector<shared_ptr<Shape>> shapes {tO, tT, tL, tJ, tI, tS, tZ};
 
   shared_ptr<Board> board = make_shared<BasicBoard>(height, width);
-  board->setDrawingTool(make_shared<BoardDrawingTool>(RGB(0, 200, 0)));
+  board->setDrawingTool(make_shared<BoardDrawingTool>(RGB(0, 0, 0)));
 
   shared_ptr<GameBoard> game_board = make_shared<DefaultGameBoard>(board);
   game_board->setDrawingTool(make_shared<GameBoardDrawingTool>());
