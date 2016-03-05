@@ -16,10 +16,13 @@ class TopFlow
             int rows);
 
     virtual ~TopFlow();
-  protected:
+  private:
     void to_menu();
     void to_playing();
     void to_game_over();
+
+    void paint_menu();
+    void paint_game_over();
 
     void menu_event_handler(genv::event ev);
     void playing_event_handler(genv::event ev);

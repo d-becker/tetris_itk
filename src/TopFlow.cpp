@@ -40,7 +40,21 @@ TopFlow::~TopFlow()
 void TopFlow::to_menu() {
   m_game_flow->pause();
   m_state = MENU;
+  paint_menu();
+}
 
+void TopFlow::to_playing() {
+  m_game_flow->newGame();
+  m_state = PLAYING;
+}
+
+void TopFlow::to_game_over() {
+  m_game_flow->pause();
+  m_state = GAME_OVER;
+  paint_game_over();
+}
+
+void TopFlow::paint_menu() {
   OutputWrapper out_dev = OutputWrapper::instance();
   out_dev.moveTo(0, 0);
   out_dev.colour(255, 255, 0);
@@ -66,15 +80,7 @@ void TopFlow::to_menu() {
   out_dev.refresh();
 }
 
-void TopFlow::to_playing() {
-  m_game_flow->newGame();
-  m_state = PLAYING;
-}
-
-void TopFlow::to_game_over() {
-  m_game_flow->pause();
-  m_state = GAME_OVER;
-
+void TopFlow::paint_game_over() {
   OutputWrapper out_dev = OutputWrapper::instance();
   out_dev.moveTo(0, 0);
   out_dev.colour(255, 255, 0);
@@ -133,7 +139,7 @@ void TopFlow::increase_difficulty() {
   }
 
   set_timer_difficulty();
-  to_menu();
+  paint_menu();
 }
 
 void TopFlow::decrease_difficulty() {
@@ -142,7 +148,7 @@ void TopFlow::decrease_difficulty() {
   }
 
   set_timer_difficulty();
-  to_menu();
+  paint_menu();
 }
 
 void TopFlow::set_timer_difficulty() {
