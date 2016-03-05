@@ -1,4 +1,7 @@
 #include "TopFlow.h"
+
+#include <sstream>
+
 #include "OutputWrapper.h"
 
 TopFlow::TopFlow(int window_width,
@@ -52,6 +55,14 @@ void TopFlow::to_menu() {
   out_dev.moveTo((window_width - width) / 2, 20);
   out_dev.text(str);
 
+  std::stringstream s;
+  s << "Difficulty (Use Up and Down arrows to change): " << m_difficulty + 1;
+  str = s.str();
+  genv::gout.load_font("LiberationMono-Bold.ttf", 12);
+  width = genv::gout.twidth(str);
+  out_dev.moveTo((window_width - width) / 2, 120);
+  out_dev.text(str);
+
   out_dev.refresh();
 }
 
@@ -88,8 +99,14 @@ void TopFlow::to_game_over() {
 
 void TopFlow::menu_event_handler(genv::event ev) {
   using namespace genv;
-  if (ev.type == ev_key && ev.keycode == key_enter) {
-    to_playing();
+  if (ev.type == ev_key) {
+    if (ev.keycode == key_enter) {
+      to_playing();
+    } else if (ev.keycode == key_up) {
+      increase_difficulty();
+    } else if (ev.keycode == key_down) {
+      decrease_difficulty();
+    }
   }
 }
 
@@ -107,5 +124,31 @@ void TopFlow::game_over_event_handler(genv::event ev) {
   using namespace genv;
   if (ev.type == ev_key && ev.keycode == key_enter) {
     to_menu();
+  }
+}
+
+void TopFlow::increase_difficulty() {
+  if (++m_difficulty == 3) {
+    m_difficulty = 2;
+  }
+
+  set_timer_difficulty();
+  to_menu();
+}
+
+void TopFlow::decrease_difficulty() {
+  if (--m_difficulty == -1) {
+    m_difficulty = 0;
+  }
+
+  set_timer_difficulty();
+  to_menu();
+}
+
+void TopFlow::set_timer_difficulty() {
+  switch (m_difficulty) {
+    case 0 : { m_game_flow->setTimeoutInterval(1500); break; }
+    case 1 : { m_game_flow->setTimeoutInterval(800); break; }
+    case 2 : { m_game_flow->setTimeoutInterval(300); break; }
   }
 }

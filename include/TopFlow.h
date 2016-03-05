@@ -24,6 +24,10 @@ class TopFlow
     void menu_event_handler(genv::event ev);
     void playing_event_handler(genv::event ev);
     void game_over_event_handler(genv::event ev);
+
+    void increase_difficulty();
+    void decrease_difficulty();
+    void set_timer_difficulty();
   private:
     std::shared_ptr<GGameFlow> m_game_flow;
 
@@ -34,6 +38,8 @@ class TopFlow
     };
 
     State m_state = MENU;
+
+    int m_difficulty = 0;
 };
 
 #endif // TOPFLOW_H
