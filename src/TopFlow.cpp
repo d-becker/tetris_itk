@@ -13,8 +13,12 @@ TopFlow::TopFlow(int window_width,
   std::shared_ptr<tetris::Game> game = GGameFlow::make_game(rows, cols);
   m_game_flow = std::make_shared<GGameFlow>(window_width, window_height, game);
 
+  // Automatically go to game over screen on game over, no need for an event.
+  m_game_flow->setGameOverCall( [&, this]() {
+                                  to_game_over();
+                               });
+
   gout.open(window_width, window_height);
-  genv::gout << genv::text("Alma") << genv::refresh; ///////////////////////////////////
   to_menu();
 
 
@@ -49,6 +53,7 @@ void TopFlow::to_playing() {
 }
 
 void TopFlow::to_game_over() {
+  std::lock_guard<std::mutex> lock(m_lock);
   m_game_flow->pause();
   m_state = GAME_OVER;
   paint_game_over();

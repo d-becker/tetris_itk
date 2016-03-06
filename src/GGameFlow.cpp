@@ -127,6 +127,16 @@ void GGameFlow::pause() {
   tetris::BasicGameFlow::pause();
 }
 
+void GGameFlow::setGameOverCall(std::function<void(void)> game_over_call) {
+  m_game_over_call = game_over_call;
+}
+
+void GGameFlow::on_game_over() {
+  if (m_game_over_call) {
+    m_game_over_call();
+  }
+}
+
 int GGameFlow::calculate_block_size() const {
   auto board = getGame()->getGameBoard()->getBoard();
   int cols = board->getWidth();

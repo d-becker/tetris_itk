@@ -2,6 +2,7 @@
 #define TOPFLOW_H
 
 #include <memory>
+#include <mutex>
 
 #include <graphics.hpp>
 
@@ -43,6 +44,7 @@ class TopFlow
     State m_state = MENU;
 
     int m_difficulty = 0;
+    mutable std::mutex m_lock {};
 };
 
 #endif // TOPFLOW_H

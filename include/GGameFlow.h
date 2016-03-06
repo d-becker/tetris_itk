@@ -3,6 +3,7 @@
 
 #include "BasicGameFlow.h"
 
+#include <functional>
 #include <memory>
 
 #include "DrawingContextInfo.h"
@@ -34,6 +35,10 @@ class GGameFlow : public tetris::BasicGameFlow
     }
 
     void pause();
+
+    void setGameOverCall(std::function<void(void)> game_over_call);
+  protected:
+    void on_game_over() override;
   private:
     int calculate_block_size() const;
     int calculate_horizontal_offset() const;
@@ -42,6 +47,7 @@ class GGameFlow : public tetris::BasicGameFlow
     const int m_window_height;
     tetris::DrawingContextInfo m_dci;
     int m_horizontal_offset;
+    std::function<void(void)> m_game_over_call;
 };
 
 #endif // GGAMEFLOW_H
